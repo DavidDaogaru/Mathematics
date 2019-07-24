@@ -1,0 +1,244 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={6in, 9in}]{geometry}
+\usepackage{amsmath}
+\title{Art Of Problem Solving}
+\author{David Daogaru}
+\date{}
+
+\begin{document}
+
+\maketitle
+\large{
+\textbf{Problem}
+\newline
+For a certain value of $k$, the system
+
+\begin{align*}
+x + y + 3z &= 10, \\
+-4x + 2y + 5z &= 7, \\
+kx + z &= 3
+\end{align*}
+
+has no solutions. What is this value of $k$?
+\newline
+\textbf{Solution} \newline \newline
+Let A=\begin{bmatrix}
+1 & 1 & 3 \\
+-4 & 2 & 5 \\
+k & 0 & 1 \end{bmatrix} be the matrix of the system and 
+\newline \newline \newline
+\overline{A}=
+\begin{bmatrix}
+1 & 1 & 3 & 10 \\
+-4 & 2 & 5 & 7 \\
+k & 0 & 1 & 3 \end{bmatrix}  $the extended matrix.$ 
+\newline \newline \newline
+As \begin{bmatrix}
+1 & 1 \\
+-4 & 2\end{bmatrix}=$6\neq0$ we get that  $rankA\in\{2,3\}$
+\newline \newline \newline
+$detA=6-k$
+
+If $k=6$ then $rankA=2$
+\newline \newline 
+As \begin{vmatrix}
+1 & 1  & 10 \\
+-4 & 2 & 7 \\
+k & 0 & 3 \end{vmatrix}=$18-13k\neq0$ for $k=6$ so rank \overline{A}=$3\neq rankA$ 
+\newline \newline
+From Kronecker-Capelli we get that the system is incompatible(it has no solutions), so $k=6$ is a solution. 
+
+If $k\neq6$ then $rankA=rank\overline{A}=3$ and again from Kronecker-Capelli we have that the system is compatible so there is at least a solution.
+
+Therefore $k=6$ is the unique value that makes the system incompatible.
+\newline \newline
+\textbf{Kronecker-Capelli Theorem} \newline
+A linear system is compatible if and only if $rankA=rank\overline{A}$
+
+\newpage
+
+\textbf{Property}
+$f:\mathbb{R}\to\mathbb{R}$ a continuous and periodic function, with period $T>0$, $a\in\mathbb{R}$ and $F_0$ a primitive for $\left.f\right|_{[a,a+T]}$. Then, function $F:\mathbb{R}\to\mathbb{R}$, $F(x)=F_0(x-kT)+k(F_0(a+T)-F_0(a)), \forall x\in(a+kT,a+(k+1)T),$
+$k\in\mathbb{Z}$ is a primitive for $f$.
+
+$Proof$: Let $x_0\in\mathbb{R}$. If $k\in\mathbb{Z}$ so that $x_0\in(a+kT,a+(k+1)T)$, then $F$ is differentiable at $x_0$ and $F'(x_0)=F'_0(x_0-kT)=f(x_0-kT)=f(x_0)$.
+If $x_0=a+(k+1)T, k\in\mathbb{Z}$, then:
+$\lim_{x\to x_0, x<x0}\frac{F(x)-F(x_0)}{x-x_0}=\lim_{x\to x_0, x<x0}\frac{F_0(x-kT)-F_0(a+T)}{x-kT-(a+T)}=F'_0(a+T)=f(a+T)=f(x_0)$ 
+and
+$\lim_{x\to x_0, x>x0}\frac{F(x)-F(x_0)}{x-x_0}=\lim_{x\to x_0, x>x0}\frac{F_0(x-(k+1)T)-F_0(a)}{x-(k+1)T-a}=F'_0(a)=f(a)=f(x_0)$ 
+Then $F$ is differentiable at $x_0$ and $F'(x_0)=f(x_0), \forall x_0\in\mathbb{R}$, so $F$ is a primitive for$f$.
+
+Example:
+Find a primitive on $\mathbb{R}$ of function $f:\mathbb{R}\to\mathbb{R}, f(x)=\sqrt{1-sin x}$
+
+Solution:
+Function $f$ is continuous and periodic with period $T=2\pi$. We have:
+$f(x)=\sqrt{\left(sin\frac{x}{2}-cos\frac{x}{2}\right)^2}=\left|sin\frac{x}{2}-cos\frac{x}{2}\right|$.
+
+For $x\in\left[\frac{\pi}{2},\frac{5\pi}{2}\right]$, so $\frac{x}{2}\in\left[\frac{\pi}{4},\frac{5\pi}{4}\right]$ we have
+
+$f(x)=sin\frac{x}{2}-cos\frac{x}{2}$ and $F_0(x)=-2cos\frac{x}{2}-2sin\frac{x}{2}$ is a primitive of function $\left.f\right|_{[\frac{\pi}{2},\frac{5\pi}{2}]}$.
+Because $F_0\left(\frac{5\pi}{2}\right)-F_0\left(\frac{\pi}{2}\right)=4\sqrt{2}$ it results that 
+
+$F:\mathbb{R}\to\mathbb{R}, F(x)=F_0(x-2k\pi)+k\cdot4\sqrt{2}, \forall x\in\left(\frac{\pi}{2}+2k\pi, \frac{5\pi}{2}+2k\pi\right]$ and $k\in\mathbb{Z}$, is a primitive on $\mathbb{R}$ for $f$.
+ \newpage
+ 
+ \textbf{Problem}
+ \newline
+ $\int_{-1}^{3} {\frac{x}{x^{3}+1}}dx $
+ \newline \newline
+ \textbf{Solution}
+ \newline \newline
+ The integral does not converge
+
+Indefinite integral :
+
+$\frac{x}{x^3+1}=\frac{A}{x+1} +\frac{Bx+C}{x^2-x+1}$
+
+We want the following relation to be true in order to establish the equality from above
+
+$A(x^2-x+1)+(Bx+C)(x+1)=x$
+$(A+B)x^2+(-A+B+C)x+(A+C)=x$
+So we have the system
+$\begin{cases} A+B=0 \\ -A+B+C=1 \\ A+C=0 \end{cases}$
+with solutions:
+$A=-\frac{1}{3} $  
+    
+$B=\frac{1}{3}$   
+
+$C=\frac{1}{3}$
+So the fraction is rewritten as:
+$\frac{x+1}{3(x^2-x+1)}-\frac{1}{3(x+1)}$
+$I=\int\frac{x+1}{3(x^2-x+1)}-\frac{1}{3(x+1)}=\frac{1}{3}\left(\int\frac{x}{x^2-x+1}+\int\frac{1}{x^2-x+1}-\int\frac{1}{x+1}\right)$
+
+$I=\frac{1}{3}\left(\frac{1}{2}\cdot\int\frac{2x-1+1}{x^2-x+1}+\int\frac{1}{x^2-x+1}-\int\frac{1}{x+1}\right)$
+
+$I=\frac{1}{3}\left(\frac{1}{2}\cdot\int\frac{\frac{d}{dx}(x^2-x+1)}{x^2-x+1}+\frac{1}{2}\cdot\int\frac{1}{x^2-x+1}+\int\frac{1}{x^2-x+1}-\int\frac{1}{x+1}\right)$
+
+$I=\frac{1}{3}\left(\frac{1}{2}ln|x^2-x+1|+\frac{3}{2}\int\frac{1}{x^2-x+1}-ln|x+1|\right)$
+
+$I=\frac{1}{6}\left(ln|x^2-x+1|-2ln|x+1|+3\int\frac{1}{\left(x-\frac{1}{2}\right)^2+\frac{3}{4}}\right)$
+
+$I=\frac{1}{6}\left(ln|x^2-x+1|-2ln|x+1|+2\sqrt{3}\cdot arctan\frac{2x-1}{\sqrt{3}}\right)+C$
+
+When we try to compute $F(-1)$ we obtain $ln$  ${0}$ which does not exist.
+
+ \newpage
+ 
+ \textbf{Problem}
+ \newline \newline
+ Evaluate: $\int_{0}^{\infty} \frac{x^{3}}{1 + x^{6}}\ dx$
+ \newline \newline
+\textbf{Solution}
+\newline \newline
+\begin{spacing}{\baselinestretch}
+Using the formula for $x^{2n}+y^{2n}$ we obtain $1+x^6=(x^2+\sqrt3 x+1)(x^2+1)(x^2-\sqrt3 x+1)$
+so the fraction can be written as:
+$\frac{x}{6(x^2-\sqrt3 x+1)}-\frac{x}{3(x^2+1)}+\frac{x}{6(x^2+\sqrt 3 x+1)}$
+ \newline \newline
+ General way: $\int\frac{x}{ax^2+bx+c}dx=\frac{1}{2a}\int\frac{2ax}{a^2x+bx+c}dx=\frac{1}{2a}\int\frac{2ax+b-b}{ax^2+bx+c}dx=\frac{1}{2a}\int\frac{2ax+b}{ax^2+bx+c}dx-\frac{b}{2a}\int\frac{1}{ax^2+bx+c}dx$
+
+$\frac{1}{2a}\int\frac{2ax+b}{ax^2+bx+c}dx=\frac{1}{2a}\int\frac{\frac{d}{dx}(ax^2+bx+c)}{ax^2+bx+c}dx=\frac{1}{2a}ln|ax^2+bx+c|+C$
+
+$\int\frac{1}{ax^2+bx+c}dx=\int\frac{1}{a\left(x+\frac{b}{2a}\right)^2+\frac{-\Delta}{4a}}dx=\frac{1}{a}\int\frac{1}{\left(x+\frac{b}{2a}\right)^2+\frac{-\Delta}{4a^2}}dx$
+
+Substituting  $x+\frac{b}{2a}=t$ we get
+
+$\frac{1}{a}\int\frac{1}{t^2-\frac{\Delta}{4a^2}}dt$
+
+If $\Delta<0$ we use the following formula 
+
+$\int\frac{1}{x^2+a^2}dx=\frac{1}{a}tan^{-1}\frac{x}{a}+C$
+
+If $\Delta>0$ we use the following formula
+
+$\int\frac{1}{x^2-a^2}dx=\frac{1}{2a}ln\left|\frac{x-a}{x+a}\right|+C$ or $-\frac{1}{a}coth^{-1}\frac{x}{a}$ \newline
+Finally, using the above formulas, we compute the definite integrals to get:
+$\lim_{x -> \infty} I-F(0)=0-(\frac{-1}{\sqrt3}\cdot tan^{-1}(\sqrt3))=\frac{\pi}{3\sqrt3}$
+
+
+\newpage
+\textbf{Problem}
+\newline \newline
+Evaluate: $\int \frac{1}{\sin x + \tan x}\ dx$
+\newline \newline
+\textbf{Solution}
+\newline \newline
+$sin x=\frac{2tan(\frac{x}{2})}{1+tan^2\frac{x}{2}}$
+$cos x=\frac{1-tan^2\frac{x}{2}}{1+tan^2\frac{x}{2}}$
+So $tan x=\frac{2tan(\frac{x}{2})}{1-tan^2\frac{x}{2}}$
+$I=\int\frac{1}{sinx+tanx}dx=\int\frac{1}{\frac{2tan\frac{x}{2}}{1+tan^2\frac{x}{2}}+\frac{2tan\frac{x}{2}}{1-tan^2\frac{x}{2}}}dx=\int\frac{(1+tan^2\frac{x}{2})(1-tan^2\frac{x}{2})}{4tan(\frac{x}{2})}dx$
+Knowing that $\frac{d}{dx}tan\frac{x}{2}=\frac{1+tan^2\frac{x}{2}}{2}$ we obtain
+$\int\frac{(\frac{d}{dx}tan\frac{x}{2})(1-tan^2\frac{x}{2})}{2tan(\frac{x}{2})}dx$
+$u(x)=tan\frac{x}{2}$
+$I=\frac{1}{2}\int\frac{1-u^2}{u}du$
+$I=\frac{1}{2}(lnu-\frac{u^2}{2})+C=\frac{1}{2}(ln(tan\frac{x}{2})-\frac{tan^2\frac{x}{2}}{2})+C$
+\newline \newline
+\textbf{Alternative solution}
+\begin{flushleft}
+\newline \newline
+$sec(x)=\frac{1}{cos(x)}$
+
+$I=\int\frac{1}{sin(x)+tan(x)}dx=\int\frac{sec(x)tan(x)}{tan^2(x)+sec(x)tan^2(x)}dx$
+
+Preparing to substitute with $u(x)=sec(x)$, we rewrite the integral using $tan^2(x)=sec^2(x)-1$
+
+$I=\int\frac{sec(x)tan(x)}{sec^2-1+sec^3(x)-sec(x)}dx=\int\frac{sec(x)tan(x)}{(sec(x)-1)(1+sec(x))^2}dx$
+
+$du=tan(x)sec(x)$
+
+$I=\int\frac{1}{(u-1)(u+1)^2}du$
+
+Using partial fractions we have:
+
+$I=\int\left(-\frac{1}{4(u+1)}-\frac{1}{2(u+1)^2}+\frac{1}{4(u-1)} \right)du$
+
+$I=-\frac{1}{4}\int\frac{1}{u+1}du-\frac{1}{2}\int\frac{1}{(u+1)^2}du+\frac{1}{4}\int\frac{1}{u-1}du$
+
+$I=-\frac{1}{4}ln(u+1)+\frac{1}{2}\cdot\frac{1}{u+1}+\frac{1}{4}ln(u-1)+C$
+
+$I=-\frac{1}{4}ln(sec(x)+1)+\frac{1}{2}\cdot\frac{1}{sec(x)+1}+\frac{1}{4}ln(sec(x)-1)+C$
+
+To obtain an alternative form:
+
+$I=\frac{(sec(x)+1)ln(sec(x)-1)-(sec(x)+1)ln(sec(x)+1)+2}{4sec(x)+4}+C$
+
+$I=\frac{sec(x)ln(sec(x)-1)+ln(sec(x)-1)-ln(sec(x)+1)-sec(x)ln(sec(x)+1)+2}{4sec(x)+4}+C$
+
+$ln(sec(x)-1)-ln(sec(x)+1)=ln\left(\frac{sec(x)-1}{sec(x)+1}\right)=ln\left(\frac{1-cos(x)}{1+cos(x)}\right)=ln\left(tan^2\left(\frac{x}{2}\right)\right)$
+
+$I=\frac{ln\left(tan^2\left(\frac{x}{2}\right)\right)+sec(x)ln(sec(x)-1)-sec(x)ln(sec(x)+1)+2}{4sec(x)+4} +C$
+
+$I=\frac{ln(tan^2\left(\frac{x}{2}\right))}{4}+\frac{1}{2(sec(x)+1)}+C$
+
+$cos(x)-1\le0, cos(x)+1\ge0$ so $\frac{cos(x)-1}{cos(x)+1}\le0$.
+\newline
+To make the natural logarithm exist we should use the absolute value for the fraction and since it's always negative we should consider it $ \frac{1-cos(x)}{cos(x)+1} $
+\end{flushleft}
+
+\newpage
+\textbf{Problem}
+\newline \newline
+Evaluate: $$\int_ {}{}x*arcsin(x)dx$$
+\newline \newline
+\textbf{Solution}
+\newline \newline
+By parts:
+$\int(x\cdot arcsin(x))dx=\frac{x^2}{2} \cdot arcsin(x)-\int \frac{x^2}{2} \cdot \frac{1}{\sqrt{1-x^2}}dx$
+Then we make the notation:
+$I=-\int \frac{x^2}{2} \cdot \frac{1}{\sqrt{1-x^2}}dx=-\frac{1}{2}\int\frac{x^2}{\sqrt{1-x^2}}dx$
+We take into consideration that: $ \frac{d}{dx}\sqrt{1-x^2} = -\frac{x}{\sqrt{1-x^2}}$ 
+Therefore: $I=\frac{1}{2}\int x (\frac {d}{dx}\sqrt{1-x^2})dx$
+By parts we have: $I=\frac{1}{2} \cdot x\sqrt{1-x^2}-\frac{1}{2}\int\sqrt{1-x^2}dx$
+Which is $\frac{1}{2} \cdot x\sqrt{1-x^2}-\frac{1}{2}\int\frac{1-x^2}{\sqrt{1-x^2}}dx$
+So, $I=\frac{1}{2} \cdot x\sqrt{1-x^2} -\frac{1}{2} \int  \frac{1}{\sqrt{1-x^2}}dx+\frac {1}{2}\int \frac{x^2}{\sqrt{1-x^2}}dx$
+$I=\frac{1}{2} ( x\sqrt{1-x^2}-arcsin(x))-I$
+$2I=\frac{1}{2} ( x\sqrt{1-x^2} -arcsin(x))+C$
+$I=\frac{1}{4}( x\sqrt{1-x^2} -arcsin(x))+C$
+So the result is:
+$\int(x\cdot arcsin(x))dx=\frac{x^2}{2} \cdot arcsin(x)+\frac{1}{4}( x\sqrt{1-x^2} -arcsin(x))+C$
+Or: $\frac{2x^2-1}{4} \cdot arcsin(x)+\frac{1}{4}x\sqrt{1-x^2}+C$
+\end{spacing}
+}
+\end{document}
