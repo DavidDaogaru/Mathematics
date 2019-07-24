@@ -1,1 +1,1 @@
-# Mathematical problems solved and my own research
+## My own content, proposed solutions and technical writing.
