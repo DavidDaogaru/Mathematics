@@ -1,2 +1,1 @@
-# aops
-Solved problems from artofproblemsolving.com
+# Mathematical problems solved and my own research
