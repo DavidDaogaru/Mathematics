@@ -1,0 +1,24 @@
+---
+title: "Useful Statistical Code"
+author: "David Daogaru"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+
+The **Yule-Kendall skewness statistic (resistant)**  
+The Yule-Kendall statistic measures skewness in the middle half of the data (only). It does not consider the entire distribution.
+The formula is as follows: $$\large{\dfrac{(q_{75}-q_{50})-(q_{50}-q_{25})}{q_{75}-q_{25}}}$$. The function is easily written as below.
+
+```{r}
+YK=function(x){ 
+qs=quantile(x,probs=c(0.25,0.5,0.75))
+res=(qs[1]-2*qs[2]+qs[3])/(qs[3]-qs[1]) 
+names(res)=NULL 
+res 
+} 
+```
+
+The **moment skewness** considersthe entire distribution and is computed as follows: $$\large{\dfrac{1}{n}\sum_{i=1}^{n}\left(\dfrac{x_i-\bar{x}}{s}\right)^3}$$
